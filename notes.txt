@@ -1,0 +1,103 @@
+You probably know a lot of this already, but its good to make sure everyone is on the same page.
+
+why-bdd: Some of benefits we are hoping to gain
+	1. Allows us to understand what the product does and analyse change impact
+	2. Better engagement with business users - clear targets
+	3. Collaboration ensures shared understanding, less back and forth
+	4. Aids tdd, delivery, estimation and testing
+	5. Act of writing GWT flushes out ambiguities present in single line COAs.
+	
+	
+	
+what-is-a-scenario:
+	1. One of many types: Context-specification, table-based (fitness), simple bullet points. I find scenario to be the best fit for web applications.
+	2. 
+	3. Business readable DSL
+	4. Uses indentation to define structure, broken into features, scenarios and steps
+	
+	
+	
+steps-given:
+	1. Or authenticate the user
+	2. Although you could do it via the UI. Don't want to manipulate the database directly. Want to ensure the state is genuine.
+	3. Things like logging in should be considered standard, unless that is core to the scenario.
+	4. Where the setup is not really relevant
+	
+	
+	
+steps-when:
+
+
+
+
+steps-then:
+
+
+
+tables:
+
+
+
+
+scenario-outlines: also shows how you can use large text blocks. Note: typically don't want to couple the test to specific text.
+
+
+
+
+user-stories-to-features: Not necessarily the same thing
+
+
+
+
+describe-what-system-does-not-how-1: This is biggest trap teams fall into.
+Don't want to couple your specifications to details of the user flow, otherwise costly to maintain
+and difficult to understand
+
+
+
+describe-what-system-does-not-how-2:
+
+
+
+
+describe-what-system-does-not-how-3:
+
+
+
+
+avoid-non-behavioural:
+	1.
+	2. These are more brittle than behavioural tests.
+	3.
+	4. Note we've removed "the home page is loaded" step, trying to decouple the rule as much as possible from the implementation
+
+	
+	
+precise-and-testable:
+
+
+	
+
+business-not-software:
+	1. This is more difficult with UI testing.
+	2.
+	3. Form can be submitted via enter key. Insulates you from changes in the way the form may be submitted.
+	4.
+	5. ie, be more specific and granular.
+	
+
+	
+dont-mix-ui-and-business-rules:
+
+
+
+avoid-unnecessary-roles:
+
+
+
+automation-not-end-goal:
+
+
+
+
+

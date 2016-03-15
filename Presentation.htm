@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://huddle.github.com/deck.js/boilerplate.html#slide-2 -->
+<html class="js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+
+	<title>Writing BDD Scenarios</title>
+	
+	<!-- All the styles for the Huddle presentation -->
+	<link rel="stylesheet" href="./Presentation_files/combined.css">
+	
+	<!-- Modernizr to make the most of browser features -->
+	<script src="./Presentation_files/modernizr.custom.js"></script>
+
+</head>
+<body class="deck-container on-slide-slide-2 on-slide-2">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+
+<!-- adding an id attribute allows direct linking to slide -->
+<section class="slide deck-before" id="start">
+	<div class="deck-slide-scaler" style=""><h1>
+		<img src="./Presentation_files/huddle_logo.jpg">
+		Writing BDD Scenarios
+	</h1></div>
+</section>
+
+<section class="slide deck-current" id="why-bdd">
+	<h2>Why do we want BDD?</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="why-bdd-1">
+			<h3>Living documentation</h3>
+		</li>
+		<li class="slide deck-after" id="why-bdd-2">
+			<h3>Higher product quality</h3>
+		</li>
+		<li class="slide deck-after" id="why-bdd-3">
+			<h3>Less rework</h3>
+		</li>
+		<li class="slide deck-after" id="why-bdd-4">
+			<h3>Split stories into tasks more effectively</h3>
+		</li>
+		<li class="slide deck-after" id="why-bdd-5">
+			<h3>Helps ensure we have not missed acceptance criteria</h3>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="what-is-a-scenario">
+	<h2>What is a scenario?</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="what-is-a-scenario-1">
+			<h3>Form of specification</h3>
+		</li>
+		<li class="slide deck-after" id="what-is-a-scenario-2">
+			<h3>Grouped into features</h3>
+		</li>
+		<li class="slide deck-after" id="what-is-a-scenario-3">
+			<h3>Written using Gherkin language</h3>
+		</li>
+		<li class="slide deck-after" id="what-is-a-scenario-4">
+			<h3>Format:</h3>
+			<pre>
+ 1: Feature: Some terse yet descriptive text of what is desired
+ 2:   In order to realize a named business value
+ 3:   As an explicit system actor
+ 4:   I want to gain some beneficial outcome which furthers the goal
+ 5: 
+ 6:   Scenario: Some determinable business situation
+ 7:     Given some precondition
+ 8:     And some other precondition
+ 9:     When some action by the actor
+10:     And some other action
+11:     And yet another action
+12:     Then some testable outcome is achieved
+13:     And something else we can check happens too
+14: 
+15:   Scenario: A different situation
+16:     ...
+			</pre>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="steps-given">
+	<h2>Steps: Given</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="steps-given-1">
+			<h3>Put the system in a known state</h3>
+			<p>eg, set up the model or database</p>
+		</li>
+		<li class="slide deck-next" id="steps-given-2">
+			<h3>Typically do this through an API</h3>
+		</li>
+		<li class="slide deck-next" id="steps-given-3">
+			<h3>Only state specific to the scenario</h3>
+		</li>
+		<li class="slide deck-next" id="steps-given-4">
+			<h3>Often there are no given steps</h3>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="steps-when">
+	<h2>Steps: When</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="steps-when-1">
+			<h3>Describe the key action</h3>
+		</li>
+		<li class="slide deck-next" id="steps-when-2">
+			<h3>State transition</h3>
+		</li>
+		<li class="slide deck-next" id="steps-when-3">
+			<h3>Usually a sinlge action</h3>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="steps-then">
+	<h2>Steps: Then</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="steps-then-1">
+			<h3>Observe outcomes</h3>
+		</li>
+		<li class="slide deck-next" id="steps-then-2">
+			<h3>Verify that something related to the Given+When is (or is not) in the output</h3>
+		</li>
+		<li class="slide deck-next" id="steps-then-3">
+			<h3>Check that some external system has received the expected message</h3>
+			<p class="slide deck-next" id="steps-then-3-1">eg, was an email with specific content sent?</p>
+			<p class="slide deck-next" id="steps-then-3-2">or was an API call with specific content made?</p>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="tables">
+	<h2>Tabular data</h2>
+    <!-- nested slide allow incremental reveal -->
+    <div class="slide deck-next" id="tables-1">
+        <pre>
+Given the following users exist:
+| name  | email           | phone |
+| Aslak | aslak@email.com | 123   |
+| Matt  | matt@email.com  | 234   |
+| Joe   | joe@email.org   | 456   | 
+        </pre>
+    </div>
+</section>
+
+<section class="slide deck-current" id="scenario-outlines">
+	<h2>Scenario Outlines</h2>
+    <div class="slide deck-next" id="scenario-outlines-1">
+        <pre>
+Scenario Outline: Email confirmation
+Given a user with name "Jojo Binks"
+When an Admin grants them &lt;Role&gt; rights
+Then they should receive an email with the body:
+"""
+Dear Jojo Binks,
+You have been granted &lt;Role&gt; rights.  You are &lt;details&gt;. Please be responsible.
+-The Admins
+"""
+Examples:
+|  Role     | details                                         |
+|  Manager  | now able to manage your employee accounts       |
+|  Admin    | able to manage any user account on the system   |
+        </pre>
+    </div>
+</section>
+
+<section class="slide deck-current" id="user-stories-to-features">
+	<h2>From user stories to features</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="user-stories-to-features-1">
+			<h3>User stories may contain many features</h3>
+		</li>
+		<li class="slide deck-after" id="user-stories-to-features-2">
+			<h3>User stories may span several bounded contexts</h3>
+		</li>
+		<li class="slide deck-after" id="user-stories-to-features-3">
+			<h3>Features are within a bounded context</h3>
+		</li>
+		<li class="slide deck-after" id="user-stories-to-features-4">
+			<h3>Features are components of the bounded context</h3>
+			<ul class="">
+				<li class="slide deck-after" id="user-stories-to-features-5">
+					<h3>Example: Create Folder dialog</h3>
+				</li>
+				<li class="slide deck-after" id="user-stories-to-features-5">
+					<h3>Features:</h3>
+					<ul class="">
+						<!-- nested slide allow incremental reveal -->
+						<li class="slide deck-after" id="user-stories-to-features-5-1">
+							<h3>UI: Create Folder Dialog</h3>
+						</li>
+						<li class="slide deck-after" id="user-stories-to-features-5-1">
+							<h3>UI: Folder Page > Primary Actions</h3>
+						</li>
+						<li class="slide deck-after" id="user-stories-to-features-5-1">
+							<h3>API: Create Folder</h3>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide section-intro deck-previous" id="creating-features">
+	<div class="deck-slide-scaler" style=""><h1>Creating Features</h1></div>
+</section>
+
+<section class="slide deck-current" id="describe-what-system-does-not-how-1">
+	<h2>Describe what the system does, not how it does it</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-after" id="describe-what-system-does-not-how-1-1">
+			<h3>Scripts are not specifications</h3>
+		</li>
+		<li class="slide deck-next" id="describe-what-system-does-not-how-1-2">
+			<h3>A <em>script explains</em> how something can be tested</h3>
+		</li>
+		<li class="slide deck-next" id="describe-what-system-does-not-how-1-2">
+			<h3>A <em>specification</em> explains what the system does</h3>
+		</li>
+		<li class="slide deck-after" id="describe-what-system-does-not-how-1-1">
+			<h3>This is a script:</h3>
+			<pre class="slide deck-after" id="describe-what-system-does-not-how-1-1ex">
+1 Log on as user Tom.
+2 Navigate to the home page.
+3 Search for Specification by Example.
+4 Add first result to shopping cart.
+5 Search for Beautiful Testing.
+6 Add second result to shopping cart.
+7 Verify that number of items in cart is 2.
+			</pre>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="describe-what-system-does-not-how-2">
+	<h2>Describe what the system does, not how it does it</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="describe-what-system-does-not-how-2-1">
+			<h3>Avoid specifying details not relevant to the business rule</h3>
+			<ul class="">
+				<li class="slide deck-after" id="describe-what-system-does-not-how-2-1-1">
+					<h3>Eg, irrelevant setup:</h3>
+					<pre class="slide deck-after" id="describe-what-system-does-not-how-2-1-1ex">
+Feature: Create folder dialog
+  Scenario: Submit create folder request
+    Given a user exists with the name 'Jon'
+    And the user is logged in
+    And the folder page is loaded
+    When the submit button is clicked
+    Then the create folder request is submitted
+					</pre>					
+				</li>
+				<li class="slide deck-after" id="describe-what-system-does-not-how-2-1-2">
+					<h3>Or steps that are obvious from the feature or scenario:</h3>
+					<pre class="slide deck-after" id="describe-what-system-does-not-how-2-1-2ex">
+Feature: Create folder dialog
+  Scenario: Submit create folder request
+    Given the create folder dialog is displayed
+    When the submit button is clicked
+    Then the create folder request is submitted
+					</pre>	
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="describe-what-system-does-not-how-3">
+	<h2>Describe what the system does, not how it does it</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-after" id="describe-what-system-does-not-how-3-1">
+			<h3>Hide the “how” in the automation layer, not the scenario</h3>
+			<img src="./Presentation_files/three_levels.png" />
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="avoid-non-behavioural">
+	<h2>Avoid non-behavioural scenarios</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="avoid-non-behavioural-1">
+			<h3>These typically include the word "displayed"</h3>
+		</li>
+		<li class="slide deck-after" id="avoid-non-behavioural-2">
+			<h3>Example:</h3>
+			<pre>
+When the home page is loaded
+Then the header is displayed
+And the footer is displayed
+			</pre>
+		</li>
+		<li class="slide deck-next" id="avoid-non-behavioural-3">
+			<h3>If you are testing data returned from an API, make it explicit</h3>
+		</li>
+		<li class="slide deck-after" id="avoid-non-behavioural-4">
+			<h3>Example:</h3>
+			<pre>
+Given the user is logged on with the name 'Jon'
+When the header is displayed
+Then the user 
+			</pre>
+		</li>
+	</ul></div>
+</section>
+
+<section class="slide deck-current" id="precise-and-testable">
+	<h2>Precise and testable</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="precise-and-testable-1">
+			<h3>Avoid ambiguities and vagueness</h3>
+		</li>
+		<li class="slide deck-after" id="precise-and-testable-2">
+			<h3>Avoid duplication of business rules</h3>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="business-not-software">
+	<h2>Describe business functionality, not software design</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="business-not-software-1">
+			<h3>Avoid writing scenarios that are tightly coupled with code</h3>
+		</li>
+		<li class="slide deck-next" id="business-not-software-2">
+			<h3>Prefer:</h3>
+			<p>When the form is submitted</p>
+		</li>
+		<li class="slide deck-next" id="business-not-software-3">
+			<h3>Over:</h3>
+			<p>When the submit button is clicked</p>
+		</li>
+		<li class="slide deck-next" id="business-not-software-4">
+			<h3>Prefer:</h3>
+			<p>When the widget is loaded</p>
+			<p>Then the blah field equals blah</p>
+		</li>
+		<li class="slide deck-next" id="business-not-software-5">
+			<h3>Over:</h3>
+			<p>When the home page is loaded</p>
+			<p>Then the blah field on the widget equals blah</p>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="dont-mix-ui-and-business-rules">
+	<h2>Do not mix UI and business rules</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="dont-mix-ui-and-business-rules-1">
+			<h3>Split the feature into separate features, one for each context</h3>
+		</li>
+		<li class="slide deck-after" id="dont-mix-ui-and-business-rules-2">
+			<h3>Example: Search</h3>
+		</li>
+		<li class="slide deck-after" id="dont-mix-ui-and-business-rules-3">
+			<ul class="">
+				<!-- nested slide allow incremental reveal -->
+				<li class="slide deck-after" id="dont-mix-ui-and-business-rules-3-1">
+					<h3>UI test for parameters passed:</h3>
+				</li>
+				<li class="slide deck-after" id="dont-mix-ui-and-business-rules-3-2">
+					When the search button is clicked<br>
+					Then a search is performed with the term “Foo”
+				</li>
+				<li class="slide deck-after" id="dont-mix-ui-and-business-rules-3-3">
+					<h3>Search rules can be tested at the API level:</h3>
+				</li>
+				<li class="slide deck-after" id="dont-mix-ui-and-business-rules-3-4">
+					Given “Foo” and “Bar”<br>
+					When searching for term “Foo”<br>
+					Then “Foo” is returned
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="avoid-unnecessary-roles">
+	<h2>Avoid specifying roles unless relevant</h2>
+	<ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="avoid-unnecessary-roles-1">
+			<pre>
+Given the user enters 'sadfasdf' in the quantity field
+When the user clicks the submit button
+Then an error message is displayed
+			</pre>
+		</li>
+		<li class="slide deck-after" id="avoid-unnecessary-roles-2">
+			<pre>
+Given 'sadfasdf' is entered in the quantity field
+When form is submitted
+Then an error message is displayed
+			</pre>
+		</li>
+	</ul>
+</section>
+
+<section class="slide deck-current" id="automation-not-end-goal">
+	<div class="deck-slide-scaler" style=""><h2>Automation is not the end goal</h2><ul class="">
+		<!-- nested slide allow incremental reveal -->
+		<li class="slide deck-next" id="automation-not-end-goal-1">
+			<h3>Primarily about documentation</h3>
+		</li>
+		<li class="slide deck-after" id="automation-not-end-goal-2">
+			<h3>Imagine you are creating a manual</h3>
+		</li>
+	</ul></div>
+</section>
+
+<!-- End slides. -->
+
+<!-- deck.navigation snippet -->
+<a href="http://huddle.github.com/deck.js/boilerplate.html#slide-intro" class="deck-prev-link" title="Previous">←</a>
+<a href="http://huddle.github.com/deck.js/boilerplate.html#slide-3" class="deck-next-link" title="Next">→</a>
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current">3</span>
+	/
+	<span class="deck-status-total">7</span>
+</p>
+
+<!-- deck.goto snippet -->
+<form action="http://huddle.github.com/deck.js/" method="get" class="goto-form">
+	<label for="goto-slide">Go to slide:</label>
+	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+	<datalist id="goto-datalist"></datalist>
+	<input type="submit" value="Go">
+</form>
+
+<!-- deck.hash snippet -->
+<a href="./Presentation_files/Presentation.htm" title="Permalink to this slide" class="deck-permalink">#</a>
+
+
+<!-- All the scripts to run the presentation -->
+<script src="./Presentation_files/combined-min.js"></script>
+
+
+</body></html>
